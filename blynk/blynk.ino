@@ -8,8 +8,8 @@
 #include <BlynkSimpleEsp32.h>
 
 #define HALL_PIN 15
-#define ECHO_PIN 4
-#define TRIG_PIN 0
+#define ECHO_PIN 32
+#define TRIG_PIN 33
 #define MAIN_LED_PIN 2
 
 #define rPin 27
@@ -196,7 +196,7 @@ void readDistance()
   digitalWrite(TRIG_PIN, LOW);
   duration = pulseIn(ECHO_PIN, HIGH);
   distance = duration * 0.034 / 2;
-  distance = 0;
+  Blynk.virtualWrite(V4,distance);
   if (moreThan == 1){
     if (distance > distanceLimit){
       didTrigger = 1;
